@@ -3,21 +3,32 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelScript : MonoBehaviour
 {
-    [SerializeField] private GameObject _pauseMenu,_gameOverMenu,_winPanel;
+    [SerializeField] private GameObject _pauseMenu,_gameOverMenu,_winPanel,_optionMenu,_tutorialPanel;
     [SerializeField] private TMP_Text _timeTX;
     [SerializeField] private float _time;
+    [SerializeField] private Slider _master,_music,_sfx;
+    [SerializeField] private AudioMixer _mixer;
+    private float volume,volume2,volume3;
 
     private void Start()
     {
         _pauseMenu.SetActive(false);
         _gameOverMenu.SetActive(false);
         _winPanel.SetActive(false);
+        //_optionMenu.SetActive(false);
         Time.timeScale = 1;
+        if(_tutorialPanel != null)
+        {
+            _tutorialPanel.SetActive(true);
+        }
+
+        AudioControl();
         
     }
 
@@ -28,6 +39,10 @@ public class LevelScript : MonoBehaviour
         if(DragScript.isStart == true)
         {
             _time -= Time.deltaTime;
+            if(_tutorialPanel != null)
+            {
+                _tutorialPanel.SetActive(false);
+            }
         }
         
         if(_time <= 0)
@@ -43,6 +58,67 @@ public class LevelScript : MonoBehaviour
             _winPanel.SetActive(true);
             Time.timeScale = 0;
         }
+        if(SceneManager.GetActiveScene().buildIndex == 5)
+        {
+            _pauseMenu.SetActive(false);
+            _gameOverMenu.SetActive(false);
+            _winPanel.SetActive(false);
+            _optionMenu.SetActive(false);
+        }
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            _pauseMenu.SetActive(false);
+            _gameOverMenu.SetActive(false);
+            _winPanel.SetActive(false);
+        }
+        
+        
+    }
+    private void AudioControl()
+    {
+        if(PlayerPrefs.HasKey("MasterVolume"))
+        {
+           LoadVolume(); 
+        }
+        else
+        {
+            MasterVolume();
+            MusicVolume();
+            SfxrVolume();
+
+        }
+
+    }
+    private void LoadVolume()
+    {
+        _master.value = PlayerPrefs.GetFloat("MasterVolume");
+        _music.value = PlayerPrefs.GetFloat("MusicVolume");
+        _sfx.value = PlayerPrefs.GetFloat("SfxVolume");
+
+        MasterVolume();
+        MusicVolume();
+        SfxrVolume();
+
+    }
+
+    public void MasterVolume()
+    {
+        volume = _master.value;
+        _mixer.SetFloat("Master",Mathf.Log10(volume)* 20);
+        PlayerPrefs.SetFloat("MasterVolume",volume);
+    }
+    public void MusicVolume()
+    {
+        volume2 = _music.value;
+        _mixer.SetFloat("Music",Mathf.Log10(volume2)* 20);
+        PlayerPrefs.SetFloat("MusicVolume",volume2);
+        
+    }
+    public void SfxrVolume()
+    {
+        volume3 = _sfx.value;
+        _mixer.SetFloat("SFX",Mathf.Log10(volume3)* 20);
+        PlayerPrefs.SetFloat("SfxVolume",volume3);
         
     }
     private void TimeUpdate()
@@ -89,5 +165,16 @@ public class LevelScript : MonoBehaviour
         Time.timeScale = 0;
         Application.Quit();
 
+    }
+    public void OptionBTN()
+    {
+        Time.timeScale = 0;
+        _optionMenu.SetActive(true);
+        
+    }
+    public void OptionExit()
+    {
+        Time.timeScale = 0;
+        _optionMenu.SetActive(false);
     }
 }

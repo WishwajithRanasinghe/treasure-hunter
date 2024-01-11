@@ -15,6 +15,7 @@ public class CursorScript : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        
         if(Input.GetMouseButton(0))
         {
             ChanegeCursor(_cCursor);

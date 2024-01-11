@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43599087dbac2bb43955a2335d6b7f80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dragForce: 10
+  _dragForce: 20
   _isDrag: 0
 --- !u!1 &4665454737467910024
 GameObject:
