@@ -1497,7 +1497,7 @@ GameObject:
   - component: {fileID: 745573056398983749}
   m_Layer: 0
   m_Name: antoine-petit-groundslabtile (3)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -2772,7 +2772,7 @@ GameObject:
   - component: {fileID: 1327919229182611449}
   m_Layer: 0
   m_Name: antoine-petit-groundslabtile (9)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -3155,7 +3155,7 @@ GameObject:
   - component: {fileID: 204854469572287029}
   m_Layer: 0
   m_Name: antoine-petit-groundslabtile
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -11303,7 +11303,7 @@ GameObject:
   - component: {fileID: 4083288964183606695}
   m_Layer: 0
   m_Name: antoine-petit-groundslabtile (9)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -11602,7 +11602,7 @@ GameObject:
   - component: {fileID: 8456104678060391046}
   m_Layer: 0
   m_Name: antoine-petit-groundslabtile (5)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -12866,7 +12866,7 @@ GameObject:
   - component: {fileID: 2352860882927744444}
   m_Layer: 0
   m_Name: antoine-petit-groundslabtile (5)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647

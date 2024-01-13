@@ -15,9 +15,15 @@ public class LevelScript : MonoBehaviour
     [SerializeField] private Slider _master,_music,_sfx;
     [SerializeField] private AudioMixer _mixer;
     private float volume,volume2,volume3;
+    private AudioScript1 _audioScript;
 
     private void Start()
     {
+        if(GameObject.FindGameObjectWithTag("Player") != null)
+        {
+            _audioScript = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioScript1>();
+        }
+        
         _pauseMenu.SetActive(false);
         _gameOverMenu.SetActive(false);
         _winPanel.SetActive(false);
@@ -39,15 +45,24 @@ public class LevelScript : MonoBehaviour
         if(DragScript.isStart == true)
         {
             _time -= Time.deltaTime;
+            
             if(_tutorialPanel != null)
             {
                 _tutorialPanel.SetActive(false);
             }
         }
+        if(_time <= 10)
+        {
+            _audioScript.GameTimer(true);
+        }
         
         if(_time <= 0)
         {
+
             _gameOverMenu.SetActive(true);
+            _audioScript.GameOverSound();
+            _audioScript.GameTimer(false);
+    
             _time = 0;
             Time.timeScale = 0;
             
