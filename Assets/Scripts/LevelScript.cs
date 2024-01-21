@@ -165,9 +165,10 @@ public class LevelScript : MonoBehaviour
     }
     public void MainMenu()
     {
-        Time.timeScale = 0;
+        
         SceneManager.LoadScene(0);
         _pauseMenu.SetActive(false);
+        Time.timeScale = 1;
     }
     public void PlayBTN()
     {
@@ -189,7 +190,15 @@ public class LevelScript : MonoBehaviour
     }
     public void OptionExit()
     {
-        Time.timeScale = 0;
+        
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            Time.timeScale = 1;
+        }
+        else
+        {
+            Time.timeScale = 0;
+        }
         _optionMenu.SetActive(false);
     }
 }
